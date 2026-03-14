@@ -1,4 +1,4 @@
-# Hyprv 🕹️ - A Velocity proxy plugin that intercepts and logs packets, activity, and connection data using low-level packet hooks.
+# Hyprv 🕹️ - A velocity log plugin for the Hyprx tool
 
 This project is based on Plantain by x5ten. Modifications and improvements were made in Hyprv.
 
