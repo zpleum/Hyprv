@@ -2,6 +2,10 @@
 
 This project is based on Plantain by x5ten. Modifications and improvements were made in Hyprv.
 
+<h1 align="center">
+  <img src="https://i.postimg.cc/4ywzHV6J/Hyprv.png" alt="Header Image" style="width:30%; max-width:600px;"/>
+</h1>
+
 ---
 
 ## 📜 License Notice
