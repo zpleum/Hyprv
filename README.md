@@ -122,3 +122,8 @@ Extends `ServerLoginPacket`. On `decode`, logs the connecting player's username 
 ### ⚠️ Disclaimer
 
 **This tool is for educational and ethical testing purposes only.** The developer of **Hyprv** is not responsible for any misuse, damage, or illegal activities caused by this software. Use it at your own risk. By using this tool, you agree to comply with your local laws and regulations regarding cybersecurity and network testing.
+
+This tool is intended strictly for security research and testing environments where you have permission.
+
+This project is based on Plantain by x5ten.
+Modifications and improvements were made in Hyprv.
