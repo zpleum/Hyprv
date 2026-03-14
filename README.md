@@ -1,6 +1,6 @@
-# Hyprv 🕹️
+# Hyprv 🕹️ - A Velocity proxy plugin that intercepts and logs packets, activity, and connection data using low-level packet hooks.
 
-A Velocity proxy plugin that intercepts and logs Minecraft packets, player activity, and connection data using low-level packet hooks.
+This project is based on Plantain by x5ten. Modifications and improvements were made in Hyprv.
 
 ---
 
@@ -16,7 +16,7 @@ In accordance with the GPLv3 and the original author's request, this software re
 
 ---
 
-## Features
+## ⚙️ Features
 
 - **Packet Hooking** — Intercepts raw Minecraft packets via Velocity's internal `StateRegistry` using reflection and `MethodHandles`
 - **Handshake Hook** — Rewrites the server address in handshake packets to redirect connections to a registered backend server
@@ -26,7 +26,7 @@ In accordance with the GPLv3 and the original author's request, this software re
 
 ---
 
-## Requirements
+## 🛠️ Requirements
 
 - Java 21+
 - Velocity `3.4.0-SNAPSHOT-503` (placed in `libs/`)
@@ -34,7 +34,7 @@ In accordance with the GPLv3 and the original author's request, this software re
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
 ```
 src/main/java/me/zpleum/hyprv/
@@ -48,7 +48,7 @@ src/main/java/me/zpleum/hyprv/
 
 ---
 
-## Build
+## 🔨 Build
 
 ```bash
 ./gradlew build
@@ -58,7 +58,7 @@ Output jar will be in `build/libs/`.
 
 ---
 
-## Installation
+## 📦 Installation
 
 1. Build the plugin
 2. Place the jar in your Velocity `plugins/` folder
@@ -66,7 +66,7 @@ Output jar will be in `build/libs/`.
 
 ---
 
-## How It Works
+## ⚡ How It Works
 
 ### Packet Hooks
 
@@ -87,7 +87,7 @@ Extends `ServerLoginPacket`. On `decode`, logs the connecting player's username 
 
 ---
 
-## Logged Data
+## 📊 Logged Data
 
 | Event | Data Logged |
 |-------|-------------|
@@ -98,7 +98,7 @@ Extends `ServerLoginPacket`. On `decode`, logs the connecting player's username 
 
 ---
 
-## Dependencies
+## 📚 Dependencies
 
 | Dependency | Source |
 |-----------|--------|
@@ -109,7 +109,7 @@ Extends `ServerLoginPacket`. On `decode`, logs the connecting player's username 
 
 ---
 
-## Notes
+## 📝 Notes
 
 - This plugin uses Velocity **internal APIs** (`com.velocitypowered.proxy.*`) which are not part of the public API and may break across Velocity versions
 - `PACKET_HOOKS` must be initialized as `new ArrayList<>()` before hooks are added
