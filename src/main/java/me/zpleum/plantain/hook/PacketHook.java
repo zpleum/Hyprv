@@ -1,4 +1,4 @@
-package x310.plantain.hook;
+package me.zpleum.hyprv.hook;
 
 import com.velocitypowered.proxy.protocol.MinecraftPacket;
 

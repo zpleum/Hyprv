@@ -1,4 +1,4 @@
-package x310.plantain.hook;
+package me.zpleum.hyprv.hook;
 
 import com.velocitypowered.api.network.ProtocolVersion;
 import com.velocitypowered.api.proxy.server.RegisteredServer;
@@ -6,7 +6,7 @@ import com.velocitypowered.proxy.protocol.MinecraftPacket;
 import com.velocitypowered.proxy.protocol.ProtocolUtils;
 import com.velocitypowered.proxy.protocol.packet.HandshakePacket;
 import io.netty.buffer.ByteBuf;
-import x310.plantain.Plantain;
+import me.zpleum.hyprv.Hyprv;
 
 import java.lang.reflect.Field;
 import java.util.function.Supplier;
@@ -29,7 +29,7 @@ public final class HandshakeHook extends HandshakePacket implements PacketHook {
 
     @Override
     public void encode(ByteBuf buf, ProtocolUtils.Direction direction, ProtocolVersion ignored) {
-        RegisteredServer server = Plantain.PROXY_SERVER.getAllServers().stream().iterator().next();
+        RegisteredServer server = Hyprv.PROXY_SERVER.getAllServers().stream().iterator().next();
         if (server == null) {
             throw new IllegalArgumentException("No registered server found.");
         }

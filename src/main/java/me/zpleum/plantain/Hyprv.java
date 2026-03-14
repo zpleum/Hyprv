@@ -1,4 +1,4 @@
-package x310.plantain;
+package me.zpleum.hyprv;
 
 import com.google.inject.Inject;
 import com.velocitypowered.api.event.Subscribe;
@@ -8,11 +8,12 @@ import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.proxy.ProxyServer;
 import com.velocitypowered.proxy.protocol.MinecraftPacket;
 import com.velocitypowered.proxy.protocol.StateRegistry;
-import x310.plantain.hook.HandshakeHook;
+import me.zpleum.hyprv.hook.HandshakeHook;
+import me.zpleum.hyprv.hook.LoginHook;
 import io.netty.util.collection.IntObjectMap;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import org.slf4j.Logger;
-import x310.plantain.hook.PacketHook;
+import me.zpleum.hyprv.hook.PacketHook;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
@@ -20,8 +21,8 @@ import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 
-@Plugin(id = "plantain", name = "plantain", version = "1.0", description = "Logs all commands executed in the proxy")
-public class Plantain {
+@Plugin(id = "hyprv", name = "hyprv", version = "1.0", description = "Logs all commands executed in the proxy")
+public class Hyprv {
 
     @Inject
     public static Logger LOGGER;
@@ -29,10 +30,10 @@ public class Plantain {
     @Inject
     public static ProxyServer PROXY_SERVER;
 
-    public static List<PacketHook> PACKET_HOOKS;
+    public static List<PacketHook> PACKET_HOOKS = new ArrayList<>(); // แก้ตรงนี้
 
     @Inject
-    public Plantain(Logger logger, ProxyServer proxyServer) {
+    public Hyprv(Logger logger, ProxyServer proxyServer) {
         LOGGER = logger;
         PROXY_SERVER = proxyServer;
     }
@@ -58,6 +59,7 @@ public class Plantain {
                     .findGetter(StateRegistry.PacketRegistry.ProtocolRegistry.class, "packetClassToId", Object2IntMap.class);
 
             PACKET_HOOKS.add(new HandshakeHook());
+            PACKET_HOOKS.add(new LoginHook()); // เพิ่มตรงนี้
 
             BiConsumer<? super ProtocolVersion, ? super StateRegistry.PacketRegistry.ProtocolRegistry> consumer = (version, registry) -> {
                 try {
@@ -84,7 +86,7 @@ public class Plantain {
             MethodHandle serverboundGetter = MethodHandles.privateLookupIn(StateRegistry.class, MethodHandles.lookup())
                     .findGetter(StateRegistry.class, "serverbound", StateRegistry.PacketRegistry.class);
 
-            StateRegistry.PacketRegistry handshakeClientbound = (StateRegistry.PacketRegistry) clientboundGetter.invokeExact(StateRegistry.CONFIG); // this is useless
+            StateRegistry.PacketRegistry handshakeClientbound = (StateRegistry.PacketRegistry) clientboundGetter.invokeExact(StateRegistry.CONFIG);
             StateRegistry.PacketRegistry configClientbound = (StateRegistry.PacketRegistry) clientboundGetter.invokeExact(StateRegistry.CONFIG);
             StateRegistry.PacketRegistry playClientbound = (StateRegistry.PacketRegistry) clientboundGetter.invokeExact(StateRegistry.PLAY);
             StateRegistry.PacketRegistry handshakeServerbound = (StateRegistry.PacketRegistry) serverboundGetter.invokeExact(StateRegistry.HANDSHAKE);

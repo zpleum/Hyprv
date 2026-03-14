@@ -5,7 +5,7 @@ plugins {
     id("xyz.jpenilla.run-velocity") version "2.3.1"
 }
 
-group = 'x310'
+group = 'me.zpleum'
 version = '1.0'
 
 repositories {
@@ -37,7 +37,7 @@ tasks {
     }
 }
 
-def targetJavaVersion = 17
+def targetJavaVersion = 21
 java {
     toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
 }
